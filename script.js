@@ -15,9 +15,6 @@ let computerScore = 0;
 // Function plays a single round of the game.
 // Prompt the player for input once thats done the computer plays
 function playRound(playerSelection, computerSelection) {
-    // playerSelection = prompt("rock, paper, or scissors", "");
-    // computerSelection = getComputerChoice();
-
     if (playerSelection.toLowerCase() === computerSelection) {
         return `It's a tie`;
     } else if (
@@ -43,11 +40,23 @@ function playRound(playerSelection, computerSelection) {
     return "You Lose";
 }
 
-function game() {
-    const playerSelection = getPlayerChoice();
-    const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
-    console.log(`Player: ${playerScore} Computer:  ${computerScore}`);
+function winner() {
+    if (playerScore > computerScore) {
+        return "You WIN!!!: great game";
+    } else if (computerScore > playerScore) {
+        return "Sigh! Computer Wins:Better luck next time";
+    }
+    return "Stalemate";
 }
 
-console.log(game());
+function game() {
+    for (let i = 1; i <= 5; i++) {
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+        console.log(`Player: ${playerScore} Computer:  ${computerScore}`);
+    }
+    console.log(winner());
+}
+
+game();
